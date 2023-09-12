@@ -22,7 +22,7 @@ class Item
     if can_be_archived?
       @archived = true
     else
-      puts "Item cannot be archived."
+      puts "Item cannot be archived..."
     end
   end
 end
