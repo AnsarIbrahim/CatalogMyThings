@@ -1,16 +1,12 @@
 class Item
-  attr_accessor :genre, :author, :label, :publish_date
-  attr_reader :id, :archived
+  attr_accessor :id, :genre, :author, :label, :publish_date
 
-  # Create an object of the Item class
-  # my_item = Item.new("Sifi", "Issac Asimov", "The Foundation", Time.new(1942, 01, 31))
-  def initialize(genre, author, label, publish_date)
-    @id = Random.rand(4..4000)
+  def initialize(id, genre, author, label, publish_date)
+    @id = id
     @genre = genre
     @author = author
     @label = label
     @publish_date = publish_date
-    @archived = false
   end
 
   def can_be_archived?

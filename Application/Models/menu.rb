@@ -1,62 +1,75 @@
 require_relative 'menu_display'
+require_relative '../Modules/media_library'
 
-MediaLibrary = Struct.new(:books, :music_albums, :movies, :games, :genres, :labels, :authors, :sources)
-
-def initialize_data
-  MediaLibrary.new([], [], [], [], [], [], [], [])
-end
-
-def display_media(media_list)
-  media_list.each_with_index do |item, index|
-    puts "#{index + 1}. #{item}"
-  end
-end
-
-def list_media(title, media_list)
-  puts "List of #{title}:"
-  display_media(media_list)
-end
-
-def add_media(title, _media_list)
-  puts "Enter #{title} details:"
-end
-
-MENU_OPTIONS = {
-  1 => { option: 'books', method: :list_books },
-  2 => { option: 'music albums', method: :list_music_albums },
-  3 => { option: 'movies', method: :list_movies },
-  4 => { option: 'games', method: :list_games },
-  5 => { option: 'genres', method: :list_genres },
-  6 => { option: 'labels', method: :list_labels },
-  7 => { option: 'authors', method: :list_authors },
-  8 => { option: 'sources', method: :list_sources },
-  9 => { option: 'book', method: :add_book },
-  10 => { option: 'music album', method: :add_music_album },
-  11 => { option: 'movie', method: :add_movie },
-  12 => { option: 'game', method: :add_game },
-  13 => { option: 'Quit', method: nil }
-}.freeze
+media_library = MediaLibrary.new
 
 def main_menu(media_library)
   loop do
     display_menu
-    print 'Please select an option (1-13): '
+    print 'Please select an option (1-13 or 14 to quit): '
     choice = gets.chomp.to_i
 
-    menu_option = MENU_OPTIONS[choice]
-
-    if menu_option
-      if menu_option[:method]
-        send(menu_option[:method], menu_option[:option], media_library.send(menu_option[:option]))
-      else
-        puts 'Exiting the app. Goodbye!'
-        break
-      end
+    case choice
+    when 1..5
+      handle_listing_option(choice, media_library)
+    when 6..8
+      handle_listing_labels_or_authors(choice, media_library)
+    when 9..12
+      handle_adding_option(choice, media_library)
+    when 13
+      exit_app
+      break
     else
-      puts 'Invalid option. Please select a valid option (1-13).'
+      invalid_option_message
     end
   end
 end
 
-media_library = initialize_data
+def handle_listing_option(choice, media_library)
+  case choice
+  when 1
+    list_books(media_library.books)
+  when 2
+    media_library.list_music_albums
+  when 3
+    list_movies(media_library.movies)
+  when 4
+    list_games(media_library.games)
+  when 5
+    media_library.list_genres
+  end
+end
+
+def handle_listing_labels_or_authors(choice, media_library)
+  case choice
+  when 6
+    list_labels(media_library.labels)
+  when 7
+    list_authors(media_library.authors)
+  when 8
+    list_sources(media_library.sources)
+  end
+end
+
+def handle_adding_option(choice, media_library)
+  case choice
+  when 9
+    add_book(media_library.books)
+  when 10
+    media_library.add_music_album
+  when 11
+    add_movie(media_library.movies)
+  when 12
+    add_game(media_library.games)
+  end
+end
+
+def exit_app
+  puts 'Exiting the app. Goodbye!'
+end
+
+def invalid_option_message
+  puts 'Invalid option. Please select a valid option (1-13 or 14 to quit).'
+end
+
 main_menu(media_library)
