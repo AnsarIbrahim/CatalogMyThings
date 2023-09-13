@@ -1,19 +1,17 @@
 require_relative '../Genre/genre'
 require_relative '../Item/Music_Album/music_album'
 require_relative 'media_library_io'
-# require "json"
 
 class MediaLibrary
   attr_accessor :music_albums, :genres
 
-  # DATA_FILE_PATH = "Application/Data/media_library.json"
-
   def initialize
-    @media_library_io = MediaLibraryIO.new
-    @music_albums, @genres = @media_library_io.load_data
+    @genres = []
+    @music_albums = []
+    @media_library_io = MediaLibraryIO.new(@genres)
+    load_from_json
   end
 
-  # Function to list all music albums
   def list_music_albums
     puts 'List of Music Albums:'
     music_albums.each do |album|
@@ -21,23 +19,11 @@ class MediaLibrary
     end
   end
 
-  # Function to list all genres
   def list_genres
     puts 'List of Genres:'
     genres.each do |genre|
       puts genre.name
     end
-  end
-
-  # Add a new genre if it doesn't exist
-  def find_or_create_genre(genre_name)
-    genre = genres.find { |g| g.name == genre_name }
-    if genre.nil?
-      # puts "Genre not found. Creating a new genre."
-      genre = Genre.new(genres.length + 1, genre_name)
-      genres << genre
-    end
-    genre
   end
 
   def add_music_album
@@ -47,12 +33,17 @@ class MediaLibrary
 
     create_and_store_music_album(artist, genre, on_spotify)
 
-    save_to_json # Save after adding
+    save_to_json
   end
 
-  # Save data using MediaLibraryIO
   def save_to_json
     @media_library_io.save_data(@music_albums, @genres)
+  end
+
+  def load_from_json
+    loaded_data = @media_library_io.load_data
+    @music_albums = loaded_data[:music_albums]
+    @genres = loaded_data[:genres]
   end
 
   private
