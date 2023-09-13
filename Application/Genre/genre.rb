@@ -12,7 +12,7 @@ class Genre
 
   # Custom setter method to add an item
   def add_item(item)
-    @items << item
     item.genre = self
+    @items << item
   end
 end
