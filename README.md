@@ -33,9 +33,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 CatalogMyThings <a name="about-project"></a>
+# 📚 CatalogMyThings 🎵🎮 <a name="about-project"></a>
 
-CatalogMyThings is a Ruby-based cataloging application that helps you organize your collection of books, music albums, and games. It allows you to create, manage, and categorize items using labels and genres. With an intuitive command-line interface, you can easily add, list, and archive items in your collection.
+CatalogMyThings is a Ruby-based cataloging application that helps you organize your collection of books, music albums, and games. 📖🎶🎮 It allows you to create, manage, and categorize items using labels and genres. 🏷️📚🎶 With an intuitive command-line interface, you can easily add, list, and archive items in your collection. 📁✨
 
 ## 🛠 Built With <a name="built-with"></a>
 
