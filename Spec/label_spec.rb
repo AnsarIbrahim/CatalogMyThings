@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Label do
   before :each do
-    @label = Label.new('title', 'color')
+    @label = Label.new('id', 'title', 'color')
     @item = Item.new(1, 'genre', 'author', @label, '01-01-2000')
   end
 

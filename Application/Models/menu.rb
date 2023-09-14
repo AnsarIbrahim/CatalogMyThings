@@ -1,11 +1,13 @@
 require_relative 'menu_display'
 require_relative '../Modules/media_library'
 require_relative '../Modules/game_author'
+require_relative '../Modules/book_label'
 
 media_library = MediaLibrary.new
 game_author = GameAuthor.new
+book_label = BookLabel.new
 
-def main_menu(media_library, game_author)
+def main_menu(media_library, game_author, book_label)
   loop do
     display_menu
     print 'Please select an option (1-9 or 0 to quit): '
@@ -13,11 +15,11 @@ def main_menu(media_library, game_author)
 
     case choice
     when 1..4
-      handle_listing_option(choice, media_library, game_author)
+      handle_listing_option(choice, media_library, game_author, book_label)
     when 5..6
-      handle_listing_labels_or_authors(choice, media_library, game_author)
+      handle_listing_labels_or_authors(choice, media_library, game_author, book_label)
     when 7..9
-      handle_adding_option(choice, media_library, game_author)
+      handle_adding_option(choice, media_library, game_author, book_label)
     when 0
       exit_app
       break
@@ -27,10 +29,10 @@ def main_menu(media_library, game_author)
   end
 end
 
-def handle_listing_option(choice, media_library, game_author)
+def handle_listing_option(choice, media_library, game_author, book_label)
   case choice
   when 1
-    list_books(media_library.books)
+    book_label.list_books
   when 2
     media_library.list_music_albums
   when 3
@@ -40,19 +42,19 @@ def handle_listing_option(choice, media_library, game_author)
   end
 end
 
-def handle_listing_labels_or_authors(choice, media_library, game_author)
+def handle_listing_labels_or_authors(choice, _media_library, game_author, book_label)
   case choice
   when 5
-    list_labels(media_library.labels)
+    book_label.list_labels
   when 6
     game_author.list_authors
   end
 end
 
-def handle_adding_option(choice, media_library, game_author)
+def handle_adding_option(choice, media_library, game_author, book_label)
   case choice
   when 7
-    add_book(media_library.books)
+    book_label.add_book
   when 8
     media_library.add_music_album
   when 9
@@ -68,4 +70,4 @@ def invalid_option_message
   puts 'Invalid option. Please select a valid option (1-9 or 0 to quit).'
 end
 
-main_menu(media_library, game_author)
+main_menu(media_library, game_author, book_label)
