@@ -4,7 +4,7 @@ class Game < Item
   attr_accessor :multiplayer, :last_played
 
   def initialize(id, publish_date, multiplayer, last_played)
-    super(id, publish_date)
+    super(id, nil, nil, nil, publish_date)
     @multiplayer = multiplayer
     @last_played = last_played || Time.now
   end
