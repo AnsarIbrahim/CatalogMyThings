@@ -1,0 +1,17 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "publish_date": "12-09-2022",
+      "multiplayer": true,
+      "last_played": "14-09-2023"
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "first_name": "Ansar",
+      "last_name": "Ibrahim"
+    }
+  ]
+}

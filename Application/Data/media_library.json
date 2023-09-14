@@ -5,16 +5,12 @@
       "genre": "Rock",
       "artist": "Ansar",
       "on_spotify": true
-    },
-    {
-      "id": 2,
-      "genre": "Super",
-      "artist": "Adheeb",
-      "on_spotify": false
     }
   ],
   "genres": [
-    "Rock",
-    "Super"
+    {
+      "id": 1,
+      "name": "Rock"
+    }
   ]
 }
