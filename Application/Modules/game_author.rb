@@ -12,8 +12,7 @@ class GameAuthor
   end
 
   def add_game
-    puts 'Enter ID:'
-    id = gets.chomp.to_i
+    id = @games.empty? ? 1 : @games.last.id + 1
 
     puts "Enter Author's First Name:"
     first_name = gets.chomp

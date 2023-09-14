@@ -15,23 +15,25 @@ class MediaLibrary
   def list_music_albums
     puts 'List of Music Albums:'
     music_albums.each do |album|
-      puts "Artist: #{album.artist}, Genre: #{album.genre.name}, On Spotify: #{album.on_spotify}"
+      puts "Id: #{album.id}, Artist: #{album.artist}, On Spotify: #{album.on_spotify}, " \
+           "Publish Date: #{album.publish_date}"
     end
   end
 
   def list_genres
     puts 'List of Genres:'
     genres.each do |genre|
-      puts genre.name
+      puts genre.name['name']
     end
   end
 
   def add_music_album
     artist = artist_input
+    publish_date = publish_date_input
     genre = select_or_create_genre
     on_spotify = spotify_status_input
 
-    create_and_store_music_album(artist, genre, on_spotify)
+    create_and_store_music_album(artist, genre, on_spotify, publish_date)
 
     save_to_json
   end
@@ -51,6 +53,19 @@ class MediaLibrary
   def artist_input
     puts 'Enter the artist:'
     gets.chomp
+  end
+
+  def publish_date_input
+    puts 'Enter the publish date (DD-MM-YYYY):'
+    date_input = gets.chomp
+    day, month, year = date_input.split('-').map(&:to_i)
+
+    begin
+      Date.new(year, month, day)
+    rescue ArgumentError
+      puts 'Invalid date format. Please enter the date in DD-MM-YYYY format.'
+      publish_date_input
+    end
   end
 
   def select_or_create_genre
@@ -74,12 +89,13 @@ class MediaLibrary
     gets.chomp.downcase == 'true'
   end
 
-  def create_and_store_music_album(artist, genre, on_spotify)
+  def create_and_store_music_album(artist, genre, on_spotify, publish_date)
     music_album = MusicAlbum.new(
       id: music_albums.length + 1,
       genre: genre,
       artist: artist,
-      on_spotify: on_spotify
+      on_spotify: on_spotify,
+      publish_date: publish_date
     )
     music_albums << music_album
     puts 'Music album added successfully!'

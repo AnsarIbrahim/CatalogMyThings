@@ -14,14 +14,15 @@ class MediaLibraryIO
       id: music_album.id,
       genre: music_album.genre.name,
       artist: music_album.artist,
-      on_spotify: music_album.on_spotify
+      on_spotify: music_album.on_spotify,
+      publish_date: music_album.publish_date
     }
   end
 
   def genre_to_hash(genre)
     {
       id: genre.id,
-      name: genre.name
+      name: genre.name.to_s
     }
   end
 
@@ -39,7 +40,8 @@ class MediaLibraryIO
       id: hash['id'],
       genre: find_or_create_genre(hash['genre']),
       artist: hash['artist'],
-      on_spotify: hash['on_spotify']
+      on_spotify: hash['on_spotify'],
+      publish_date: hash['publish_date']
     )
   end
 

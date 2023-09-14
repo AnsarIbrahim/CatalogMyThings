@@ -4,13 +4,36 @@
       "id": 1,
       "genre": "Rock",
       "artist": "Ansar",
-      "on_spotify": true
+      "on_spotify": true,
+      "publish_date": "2022-02-12"
+    },
+    {
+      "id": 2,
+      "genre": "Comedy",
+      "artist": "Adheeb",
+      "on_spotify": false,
+      "publish_date": "2023-07-03"
+    },
+    {
+      "id": 3,
+      "genre": "Thirller",
+      "artist": "Mani",
+      "on_spotify": false,
+      "publish_date": "2021-11-17"
     }
   ],
   "genres": [
     {
       "id": 1,
       "name": "Rock"
+    },
+    {
+      "id": 2,
+      "name": "Comedy"
+    },
+    {
+      "id": 3,
+      "name": "Thirller"
     }
   ]
 }
