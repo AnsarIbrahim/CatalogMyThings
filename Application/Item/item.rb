@@ -1,3 +1,4 @@
+require 'date'
 class Item
   attr_accessor :id, :genre, :author, :label, :publish_date, :archived
 
@@ -6,7 +7,7 @@ class Item
     @genre = genre
     @author = author
     @label = label
-    @publish_date = publish_date
+    @publish_date = Date.strptime(publish_date, '%d-%m-%Y')
     @archived = false
   end
 
