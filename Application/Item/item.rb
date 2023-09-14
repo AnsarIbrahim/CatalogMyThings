@@ -1,3 +1,4 @@
+require 'date'
 class Item
   attr_accessor :id, :genre, :author, :label, :publish_date, :archived
 
@@ -11,8 +12,6 @@ class Item
   end
 
   def can_be_archived?
-    # An item can be archived if it was published
-    # more than 10 years ago.
     Time.now.year - @publish_date.year > 10
   end
 
