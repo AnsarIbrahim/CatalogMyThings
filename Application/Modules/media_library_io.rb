@@ -15,7 +15,7 @@ class MediaLibraryIO
       genre: music_album.genre.name,
       artist: music_album.artist,
       on_spotify: music_album.on_spotify,
-      publish_date: music_album.publish_date
+      publish_date: music_album.publish_date.strftime('%Y-%m-%d') # Format the date as YYYY-MM-DD
     }
   end
 
@@ -41,7 +41,7 @@ class MediaLibraryIO
       genre: find_or_create_genre(hash['genre']),
       artist: hash['artist'],
       on_spotify: hash['on_spotify'],
-      publish_date: hash['publish_date']
+      publish_date: Date.parse(hash['publish_date']) # Parse the date from the string
     )
   end
 
@@ -68,8 +68,8 @@ class MediaLibraryIO
         hash_to_music_album(hash)
       end
 
-      genres = data['genres'].map do |name|
-        find_or_create_genre(name)
+      genres = data['genres'].map do |genre_data|
+        Genre.new(genre_data['id'], genre_data['name'])
       end
 
       { music_albums: music_albums, genres: genres }

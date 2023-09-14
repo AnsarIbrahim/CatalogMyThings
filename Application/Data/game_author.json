@@ -2,14 +2,8 @@
   "games": [
     {
       "id": 1,
-      "publish_date": "12-09-2022",
+      "publish_date": "08-09-2022",
       "multiplayer": true,
-      "last_played": "14-09-2023"
-    },
-    {
-      "id": 2,
-      "publish_date": "08-09-2023",
-      "multiplayer": false,
       "last_played": "14-09-2023"
     }
   ],
@@ -18,11 +12,6 @@
       "id": 1,
       "first_name": "Ansar",
       "last_name": "Ibrahim"
-    },
-    {
-      "id": 2,
-      "first_name": "Subbu",
-      "last_name": "Meme"
     }
   ]
 }

@@ -23,7 +23,7 @@ class MediaLibrary
   def list_genres
     puts 'List of Genres:'
     genres.each do |genre|
-      puts genre.name['name']
+      puts genre.name.is_a?(Hash) ? genre.name['name'] : genre.name
     end
   end
 
@@ -69,10 +69,12 @@ class MediaLibrary
   end
 
   def select_or_create_genre
-    puts 'Available Genres:'
-    list_genres
+    available_genres = genres.map { |genre| genre.name.is_a?(Hash) ? genre.name['name'] : genre.name }
 
-    puts 'Enter the genre (select from the above list):'
+    puts 'Available Genres:'
+    available_genres.each { |genre| puts genre }
+
+    puts 'Enter the genre (select from the above list or create new):'
     genre_name = gets.chomp
     genre = genres.find { |g| g.name == genre_name }
 
