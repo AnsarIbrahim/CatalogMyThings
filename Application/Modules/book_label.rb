@@ -77,7 +77,7 @@ class BookLabel
       id: book.id,
       publisher: book.publisher,
       cover_state: book.cover_state,
-      published: book.publish_date&.strftime('%Y-%m-%d')
+      publish_date: book.publish_date&.strftime('%d-%m-%Y')
 
     }
   end

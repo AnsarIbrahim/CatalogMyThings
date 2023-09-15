@@ -1,0 +1,28 @@
+{
+  "music_albums": [
+    {
+      "id": 1,
+      "genre": "Rock",
+      "artist": "Ansar",
+      "on_spotify": true,
+      "publish_date": "2022-09-22"
+    },
+    {
+      "id": 2,
+      "genre": "Smooth",
+      "artist": "Rahman",
+      "on_spotify": true,
+      "publish_date": "2022-08-02"
+    }
+  ],
+  "genres": [
+    {
+      "id": 1,
+      "name": "Rock"
+    },
+    {
+      "id": 2,
+      "name": "Smooth"
+    }
+  ]
+}
