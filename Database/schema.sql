@@ -1,50 +1,54 @@
-CREATE TABLE item (
-    id INTEGER PRIMARY KEY,
-    genre varchar(255),
-    author varchar(255),
-    label varchar(255),
-    publish_date date,
-    archived boolean
-);
-
-CREATE TABLE book (
-    id INTEGER PRIMARY KEY,
-    genre TEXT,
-    author TEXT,
-    label TEXT,
+CREATE TABLE Item (
+    id INT PRIMARY KEY,
+    genre_id INT,
+    author VARCHAR(255),
+    label VARCHAR(255),
     publish_date DATE,
-    publisher TEXT,
-    cover_state TEXT
+    archived BOOLEAN
 );
 
-CREATE TABLE game (
-    id INTEGER PRIMARY KEY,
-    multiplayer INTEGER,
-    last_played DATE,
-    FOREIGN KEY(id) REFERENCES item(id)
+CREATE TABLE Book (
+    id INT PRIMARY KEY,
+    genre_id INT,
+    author VARCHAR(255),
+    label VARCHAR(255),
+    publish_date DATE,
+    publisher VARCHAR(255),
+    cover_state VARCHAR(50),
+    archived BOOLEAN
 );
 
-create TABLE music_albums (
-    id int INTEGER PRIMARY KEY,
-    genre varchar(255) not null,
-    artist varchar(255) not null,
-    on_spotify boolean not null,
-    publish_date timestamp not null
+CREATE TABLE Game (
+    id INT PRIMARY KEY,
+    publish_date DATE,
+    multiplayer BOOLEAN,
+    last_played TIMESTAMP,
+    archived BOOLEAN
 );
 
-create TABLE author (
-    id INTEGER PRIMARY KEY,
-    first_name varchar(20),
-    last_name varchar(20)
+CREATE TABLE MusicAlbum (
+    id INT PRIMARY KEY,
+    genre_id INT,
+    artist VARCHAR(255),
+    label VARCHAR(255),
+    publish_date DATE,
+    on_spotify BOOLEAN,
+    archived BOOLEAN
+);
+
+CREATE TABLE Author (
+    id INT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255)
 );
 
 CREATE TABLE Genre (
-    id INTEGER PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
+    id INT PRIMARY KEY,
+    name VARCHAR(255)
 );
 
-CREATE TABLE labels (
-    id INTEGER PRIMARY KEY,
-    title TEXT,
-    color TEXT
+CREATE TABLE Label (
+    id INT PRIMARY KEY,
+    title VARCHAR(255),
+    color VARCHAR(50)
 );
