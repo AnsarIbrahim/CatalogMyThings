@@ -77,7 +77,7 @@ CatalogMyThings is a Ruby-based cataloging application that helps you organize y
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Video Walkthrough]()
+- [Video Walkthrough](https://drive.google.com/file/d/15OBO1C9OyyNLsacCb2IwOgVZYRwkVLzW/view?usp=sharing)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
